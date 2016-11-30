@@ -4,4 +4,4 @@ set -e
 
 export DEVICE=g3ds
 export VENDOR=lge
-./../../$VENDOR/g3-common/setup-makefiles.sh $@
+./../../$VENDOR/g3ds-common/setup-makefiles.sh $@

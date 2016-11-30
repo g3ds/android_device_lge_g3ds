@@ -15,7 +15,7 @@
 #
 
 # inherit from common g3
--include device/lge/g3-common/BoardConfigCommon.mk
+-include device/lge/g3ds-common/BoardConfigCommon.mk
 
 TARGET_OTA_ASSERT_DEVICE := g3,d856,d857,d858,d858hk,d859
 
