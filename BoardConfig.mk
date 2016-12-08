@@ -17,7 +17,7 @@
 # inherit from common g3
 -include device/lge/g3-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := g3,d856,d857,d858,d858hk,d859
+TARGET_OTA_ASSERT_DEVICE := g3,g3ds,d856,d857,d858,d858hk,d859
 
 # Bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/lge/g3ds/bluetooth/vnd_g3.txt

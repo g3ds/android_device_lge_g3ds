@@ -52,12 +52,12 @@ void gsm_properties(char const default_network[])
 
 void vendor_load_properties()
 {
-    char device[PROP_VALUE_MAX];
-    char serialno[PROP_VALUE_MAX];
+    std::string device;
+    std::string serialno;
 
-    property_get("ro.boot.serialno", serialno);
+    serialno = property_get("ro.boot.serialno");
 
-    if (strstr(serialno, "D856")) {
+    if (serialno == "D856") {
         /* CIS */
         gsm_properties("9,1");
 
@@ -65,7 +65,7 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "lge/g3_open_cis/g3:6.0/MRA58K/16228163339a2:user/release-keys");
         property_set("ro.product.model", "LG-D856");
 		property_set("ro.product.device", "g3");
-    } else if (strstr(serialno, "D857")) {
+    } else if (serialno == "D857") {
         /* CHINA_OPEN_LTE */
         gsm_properties("20,1");
 
@@ -73,7 +73,7 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "lge/g3_open_cn/g3:5.0.1/LRX22G/152311653f5c9:user/release-keys");
         property_set("ro.product.model", "LG-D857");
 		property_set("ro.product.device", "g3");
-    } else if (strstr(serialno, "D858HK")) {
+    } else if (serialno == "D858HK") {
         /* HONGKONG */
         gsm_properties("20,1");
 
@@ -81,7 +81,7 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "lge/g3_open_hk/g3:6.0/MRA58K/160331641f312:user/release-keys");
         property_set("ro.product.model", "LG-D858HK");
 		property_set("ro.product.device", "g3");
-    } else if (strstr(serialno, "D858")) {
+    } else if (serialno == "D858") {
         /* CHINA_MOBILE_LTE */
         gsm_properties("20,1");
 
@@ -89,7 +89,7 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "lge/g3_cmcc_cn/g3:5.0.1/LRX22G/1523117098b82:user/release-keys");
         property_set("ro.product.model", "LG-D858");
 		property_set("ro.product.device", "g3");
-    } else if (strstr(serialno, "D859")) {
+    } else if (serialno == "D859") {
        /* CHINA_TELECOM_LTE */
         cdma_properties();
 
@@ -99,6 +99,6 @@ void vendor_load_properties()
 		property_set("ro.product.device", "g3");
     } 
 
-    property_get("ro.product.device", device);
-    ERROR("Found device: %s setting build properties for %s device\n", serialno, device);
+    device = property_get("ro.product.device");
+    ERROR("Found device: %s setting build properties for %s device\n", serialno.c_str(), device.c_str());
 }
