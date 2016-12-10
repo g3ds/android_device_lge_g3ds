@@ -4,3 +4,6 @@ rild.libargs=-d /dev/smd0
 ro.telephony.call_ring.multiple=0
 ro.multisim.set_audio_params=true
 persist.radio.multisim.config=dsda
+
+# Bluetooth
+qcom.bluetooth.soc=smd
