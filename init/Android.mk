@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The CyanogenMod Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,15 +14,14 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+LOCAL_PATH := $(call my-dir)
 
-# Inherit from f400 device
-$(call inherit-product, device/lge/f400/device.mk)
+include $(CLEAR_VARS)
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_DEVICE := f400
-PRODUCT_NAME := full_f400
-PRODUCT_BRAND := lge
-PRODUCT_MODEL := LG-F400
-PRODUCT_MANUFACTURER := LGE
+LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := system/core/init
+LOCAL_CFLAGS := -Wall -DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"
+LOCAL_SRC_FILES := init_g3ds.cpp
+LOCAL_MODULE := libinit_g3ds
+
+include $(BUILD_STATIC_LIBRARY)

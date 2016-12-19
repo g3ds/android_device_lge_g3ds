@@ -17,30 +17,40 @@
 # inherit from common g3
 -include device/lge/g3-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := g3,f400,f400k,f400s,f400l
+TARGET_OTA_ASSERT_DEVICE := g3,g3ds,d856,d857,d858,d858hk,d859
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/f400/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/lge/f400/bluetooth/vnd_g3.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g3ds/bluetooth
+BOARD_CUSTOM_BT_CONFIG := device/lge/g3ds/bluetooth/vnd_g3.txt
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Kernel
-TARGET_KERNEL_CONFIG := crdroid_f400_defconfig
+TARGET_KERNEL_CONFIG := crdroid_dualsim_defconfig
 TARGET_REQUIRES_BUMP := true
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_CACHEIMAGE_PARTITION_SIZE  := 889192448
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2583691264
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 27426023424
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2164260864
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 27845453824
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/lge/f400/rootdir/etc/fstab.g3
+TARGET_RECOVERY_FSTAB := device/lge/g3ds/rootdir/etc/fstab.g3
 
 # NFC
 BOARD_NFC_CHIPSET := pn547
+
+# RIL
+BOARD_RIL_CLASS += ../../../device/lge/g3ds/ril
+
+# Vendor Init
+TARGET_INIT_VENDOR_LIB := libinit_g3ds
+TARGET_RECOVERY_DEVICE_MODULES := libinit_g3ds
+TARGET_UNIFIED_DEVICE := true
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -55,4 +65,4 @@ WIFI_DRIVER_FW_PATH_STA := "/system/etc/firmware/fw_bcmdhd.bin"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
--include vendor/lge/f400/BoardConfigVendor.mk
+-include vendor/lge/g3ds/BoardConfigVendor.mk
