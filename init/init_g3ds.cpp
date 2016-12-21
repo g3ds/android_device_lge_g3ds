@@ -55,7 +55,7 @@ void vendor_load_properties()
     std::string device;
     std::string serialno;
 
-    serialno = property_get("ro.boot.serialno");
+    serialno = property_get("ro.boot.serialno").substr(2,4);
 
     if (serialno == "D856") {
         /* CIS */
@@ -72,14 +72,6 @@ void vendor_load_properties()
         property_set("ro.build.description", "g3_open_cn-user 5.0.1 LRX22G 152311653f5c9 release-keys");
         property_set("ro.build.fingerprint", "lge/g3_open_cn/g3:5.0.1/LRX22G/152311653f5c9:user/release-keys");
         property_set("ro.product.model", "LG-D857");
-		property_set("ro.product.device", "g3");
-    } else if (serialno == "D858HK") {
-        /* HONGKONG */
-        gsm_properties("20,1");
-
-        property_set("ro.build.description", "g3_open_hk-user 6.0 MRA58K 160331641f312 release-keys");
-        property_set("ro.build.fingerprint", "lge/g3_open_hk/g3:6.0/MRA58K/160331641f312:user/release-keys");
-        property_set("ro.product.model", "LG-D858HK");
 		property_set("ro.product.device", "g3");
     } else if (serialno == "D858") {
         /* CHINA_MOBILE_LTE */
